@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home_graph"
-    app:startDestination="@string/main_fragment"
-    tools:ignore="InvalidNavigation">
+    app:startDestination="@id/main_fragment">
 
     <fragment
         android:id="@+id/main_fragment"
@@ -25,8 +24,8 @@
 
     <fragment
         android:id="@+id/movie_detail_fragment"
-        android:name="com.devwarex.movies.ui.home.search.SearchMoviesFragment"
-        tools:layout="@layout/fragment_search_movies"
+        android:name="com.devwarex.movies.ui.home.detail.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail"
         android:label="@string/movie_detail_fragment"/>
 
 </navigation>
