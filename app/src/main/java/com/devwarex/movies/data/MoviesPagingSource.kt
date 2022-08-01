@@ -1,4 +1,4 @@
-package com.devwarex.movies.adapter
+package com.devwarex.movies.data
 
 import android.util.Log
 import androidx.paging.PagingSource
