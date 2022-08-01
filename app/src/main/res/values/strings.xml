@@ -4,6 +4,6 @@
     <string name="main_fragment">Main</string>
     <string name="search_fragment">Search</string>
     <string name="movie_detail_fragment">Movie Detail</string>
-
+    <string name="search_by_name">Search</string>
 
 </resources>
