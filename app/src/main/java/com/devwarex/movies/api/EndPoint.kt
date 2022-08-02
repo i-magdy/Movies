@@ -9,4 +9,7 @@ object EndPoint {
     const val WITH_GENRES_QUERY = "with_genres"
     const val PAGE_QUERY = "page"
     const val LANG_QUERY = "language"
+
+    //keys
+    const val GENRE_ID_KEY: String = "genre id key"
 }

@@ -22,7 +22,6 @@ class MoviesPagingSource @Inject constructor(
         return try {
             val nextPageNumber = params.key ?: 1
             val list  = client.getMovies(int = nextPageNumber)
-            Log.e("SIZE","${list.results.size}")
             LoadResult.Page(
                 data = list.results,
                 prevKey = if (list.page > 1) list.page -1 else null,
@@ -32,7 +31,5 @@ class MoviesPagingSource @Inject constructor(
             Log.e("movies","${e.message}")
             LoadResult.Error(e)
         }
-
-
     }
 }

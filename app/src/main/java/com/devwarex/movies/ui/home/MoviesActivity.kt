@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -64,6 +63,7 @@ class MoviesActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 //TODO make a search
                 findNavController(R.id.nav_host_fragment_main).navigate(R.id.search_fragment)
+                menu.findItem(R.id.action_search).isVisible = false
                 return false
             }
 

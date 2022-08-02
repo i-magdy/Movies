@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/tab_icon_color_selector.xml" value="0.1845" />
         <entry key="app/src/main/res/layout/activity_basic.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_movies.xml" value="0.18177083333333333" />

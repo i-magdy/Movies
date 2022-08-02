@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.devwarex.movies.ui.home.movies.MoviesPagerFragment"
+        android:name="com.devwarex.movies.ui.home.movies.adapter.MoviesPagerFragment"
         android:label="@string/main_fragment"
         tools:layout="@layout/fragment_movies_pager">
         <action android:id="@+id/action_main_fragment_to_search_fragment"
