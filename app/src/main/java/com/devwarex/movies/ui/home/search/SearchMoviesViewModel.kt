@@ -13,6 +13,5 @@ class SearchMoviesViewModel @Inject constructor(
     private val repo: SearchMoviesRepo
 ):ViewModel(){
 
-
     fun getMovies(text: String): Flow<PagingData<Movie>> = repo.getSearchMoviesResult(query = text)
 }
