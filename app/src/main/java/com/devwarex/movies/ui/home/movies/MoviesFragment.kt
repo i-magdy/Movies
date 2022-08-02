@@ -9,7 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.devwarex.movies.R
+import com.devwarex.movies.adapter.MovieAdapterListener
 import com.devwarex.movies.adapter.MoviesAdapter
 import com.devwarex.movies.api.EndPoint.GENRE_ID_KEY
 import com.devwarex.movies.databinding.FragmentMoviesBinding
@@ -18,7 +21,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MoviesFragment: Fragment() {
+class MoviesFragment: Fragment(),MovieAdapterListener {
 
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
@@ -35,7 +38,7 @@ class MoviesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel by viewModels<MoviesViewModel>()
-        val adapter = MoviesAdapter()
+        val adapter = MoviesAdapter(this)
         binding.contentMovies.moviesRecyclerView.adapter = adapter
         lifecycleScope.launchWhenCreated {
             launch { viewModel.items.collectLatest { adapter.submitData(it) } }
@@ -51,5 +54,9 @@ class MoviesFragment: Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onMovieClick(movieId: Int) {
+        findNavController().navigate(R.id.action_main_fragment_to_movie_detail_fragment)
     }
 }

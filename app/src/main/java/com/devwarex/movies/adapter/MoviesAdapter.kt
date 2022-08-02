@@ -5,10 +5,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.devwarex.movies.model.Movie
 
-class MoviesAdapter : PagingDataAdapter<Movie,MoviesViewHolder>(CALLBACK) {
+class MoviesAdapter(private val listener: MovieAdapterListener) : PagingDataAdapter<Movie,MoviesViewHolder>(CALLBACK) {
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(getItem(position),listener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder = MoviesViewHolder.create(parent = parent)

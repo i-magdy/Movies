@@ -4,8 +4,13 @@ import android.app.SearchManager
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
+import androidx.activity.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -21,6 +26,8 @@ class MoviesActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMoviesBinding
     private var searchView: SearchView? = null
+    private var menuItem: MenuItem? = null
+    private val viewModel: MoviesMainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,30 +37,15 @@ class MoviesActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        //val viewModel: MovieView by viewModels()
-        //viewModel.sync()
 
-        /*val adapter = MoviesAdapter()
-        re.adapter = adapter
-        re.layoutManager = LinearLayoutManager(this)
-        lifecycleScope.launchWhenCreated {
-            viewModel.items.collectLatest {
-               adapter.submitData(it)
-            }
-        }
-
-        lifecycleScope.launchWhenCreated {
-            adapter.loadStateFlow.collect{
-                Log.e("loading","${it.source.prepend is LoadState.Loading}")
-                loading.isVisible = it.source.append is LoadState.Loading
-            }
-        }*/
+        navController.addOnDestinationChangedListener { controller, destination, arguments -> hideSearchView() }
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_main_menu,menu)
-        searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        this.menuItem = menu?.findItem(R.id.action_search)
+        searchView = menuItem?.actionView as SearchView
         searchView?.queryHint = getString(R.string.search_by_name)
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView?.apply {
@@ -61,9 +53,10 @@ class MoviesActivity : AppCompatActivity() {
         }
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                //TODO make a search
-                findNavController(R.id.nav_host_fragment_main).navigate(R.id.search_fragment)
-                menu.findItem(R.id.action_search).isVisible = false
+                if (query.isNotBlank()){
+                    viewModel.setQuery(query)
+                    findNavController(R.id.nav_host_fragment_main).navigate(R.id.action_main_fragment_to_search_fragment)
+                }
                 return false
             }
 
@@ -71,10 +64,6 @@ class MoviesActivity : AppCompatActivity() {
                 return false
             }
         })
-        searchView?.setOnCloseListener {
-            //TODO clear search
-            return@setOnCloseListener false
-        }
         return true
     }
 
@@ -85,6 +74,13 @@ class MoviesActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
+    private fun hideSearchView(){
+        if (searchView != null) {
+            menuItem?.isVisible = false
+            searchView?.setQuery(null, false)
+            searchView?.isIconified = true
+        }
+    }
     override fun onBackPressed() {
         if (searchView != null){
             if (searchView!!.isIconified){
