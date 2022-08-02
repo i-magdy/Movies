@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Movies</string>
-    <string name="title_activity_basic">BasicActivity</string>
-    <string name="main_fragment">Main</string>
+    <string name="main_fragment">Movies</string>
     <string name="search_fragment">Search</string>
     <string name="movie_detail_fragment">Movie Detail</string>
     <string name="search_by_name">Search</string>

@@ -17,4 +17,11 @@ class AppModule {
     @Provides
     @NamedApiKey
     fun getMovieDbApiKey(@ApplicationContext context: Context): String = context.getString(R.string.api_key)
+
+    @Singleton
+    @Provides
+    @NamedLang
+    fun getMovieDbApiLang(@ApplicationContext context: Context): String =
+        if (context.resources.configuration.locales[0].language == "ar") "ar" else "en-US"
+
 }

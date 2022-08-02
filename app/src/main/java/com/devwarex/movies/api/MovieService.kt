@@ -14,30 +14,35 @@ interface MovieService {
     suspend fun getMoviesByGenreId(
         @Query(EndPoint.API_KEY_QUERY)key: String,
         @Query(EndPoint.WITH_GENRES_QUERY) genreId: Int,
-        @Query(EndPoint.PAGE_QUERY) int: Int
+        @Query(EndPoint.PAGE_QUERY) int: Int,
+        @Query(EndPoint.LANG_QUERY) lang: String
     ): Movies
 
     @GET(EndPoint.POPULAR_MOVIES)
     suspend fun getPopularMovies(
         @Query(EndPoint.API_KEY_QUERY)key: String,
-        @Query(EndPoint.PAGE_QUERY) int: Int
+        @Query(EndPoint.PAGE_QUERY) int: Int,
+        @Query(EndPoint.LANG_QUERY) lang: String
     ): Movies
 
     @GET(EndPoint.SEARCH_MOVIES)
     suspend fun getQueryMovies(
         @Query(EndPoint.API_KEY_QUERY)key: String,
         @Query(EndPoint.SEARCH_QUERY) query: String,
-        @Query(EndPoint.PAGE_QUERY) int: Int
+        @Query(EndPoint.PAGE_QUERY) int: Int,
+        @Query(EndPoint.LANG_QUERY) lang: String
     ): Movies
 
     @GET(EndPoint.GENRES_LIST)
     suspend fun getGenres(
-        @Query(EndPoint.API_KEY_QUERY)key: String
+        @Query(EndPoint.API_KEY_QUERY)key: String,
+        @Query(EndPoint.LANG_QUERY) lang: String
     ): Genres
 
     @GET(EndPoint.MOVIE_BY_ID)
     suspend fun getMovieById(
         @Path(EndPoint.MOVIE_ID_PATH) movieId: Int,
-        @Query(EndPoint.API_KEY_QUERY) key: String
+        @Query(EndPoint.API_KEY_QUERY) key: String,
+        @Query(EndPoint.LANG_QUERY) lang: String
     ): Movie
 }

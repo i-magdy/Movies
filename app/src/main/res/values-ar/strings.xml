@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">افلام</string>
+    <string name="main_fragment">الأفلام</string>
+    <string name="search_fragment">البحث</string>
+    <string name="movie_detail_fragment">تفاصيل الفيلم</string>
+    <string name="search_by_name">أبحث</string>
+    <string name="popular_title">شائع</string>
+</resources>

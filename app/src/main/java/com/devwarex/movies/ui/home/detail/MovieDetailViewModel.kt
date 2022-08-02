@@ -28,4 +28,9 @@ class MovieDetailViewModel @Inject constructor(
     fun getMovie(movieId: Int){
         repo.getMovieById(movieId)
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        repo.cancelJob()
+    }
 }
