@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.devwarex.movies.api.EndPoint.GENRE_ID_KEY
+import com.devwarex.movies.util.EndPoint.GENRE_ID_KEY
 import com.devwarex.movies.model.Genre
-import com.devwarex.movies.model.Genres
 import com.devwarex.movies.ui.home.movies.MoviesFragment
 
 class MoviesPagerAdapter(

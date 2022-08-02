@@ -5,10 +5,14 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.devwarex.movies.api.MovieService
 import com.devwarex.movies.model.Movie
+import com.devwarex.movies.repo.PagingSourceType
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(
-    private val client: MovieService
+    private val service: MovieService,
+    private val type: PagingSourceType,
+    private val query: String,
+    private val genreId: Int
 ) : PagingSource<Int,Movie>() {
 
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
@@ -19,17 +23,56 @@ class MoviesPagingSource @Inject constructor(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
-        return try {
-            val nextPageNumber = params.key ?: 1
-            val list  = client.getMovies(int = nextPageNumber)
-            LoadResult.Page(
-                data = list.results,
-                prevKey = if (list.page > 1) list.page -1 else null,
-                nextKey = list.page + 1
-            )
-        } catch (e: Throwable) {
-            Log.e("movies","${e.message}")
-            LoadResult.Error(e)
+        val nextPageNumber = params.key ?: 1
+        return getApiResult(nextPage = nextPageNumber)
+
+    }
+
+    private suspend fun getApiResult(nextPage: Int): LoadResult<Int, Movie>{
+        return when(type){
+
+            PagingSourceType.POPULAR ->{
+                try {
+                    val result  = service.getPopularMovies(int = nextPage)
+                    LoadResult.Page(
+                        data = result.results,
+                        prevKey = if (result.page > 1) result.page -1 else null,
+                        nextKey = result.page + 1
+                    )
+                }catch (e: Throwable) {
+                    Log.e("movies","${e.message}")
+                    LoadResult.Error(e)
+                }
+            }
+
+            PagingSourceType.QUERY -> {
+                try {
+                    val result  = service.getQueryMovies(int = nextPage, query = query)
+                    LoadResult.Page(
+                        data = result.results,
+                        prevKey = if (result.page > 1) result.page -1 else null,
+                        nextKey = result.page + 1
+                    )
+                }catch (e: Throwable) {
+                    Log.e("movies","${e.message}")
+                    LoadResult.Error(e)
+                }
+            }
+
+            PagingSourceType.GENRE ->{
+                try {
+                    val result  = service.getMoviesByGenreId(int = nextPage, genreId = genreId)
+                    LoadResult.Page(
+                        data = result.results,
+                        prevKey = if (result.page > 1) result.page -1 else null,
+                        nextKey = result.page + 1
+                    )
+                }catch (e: Throwable) {
+                    Log.e("movies","${e.message}")
+                    LoadResult.Error(e)
+                }
+            }
+
         }
     }
 }

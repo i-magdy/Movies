@@ -1,23 +1,19 @@
 package com.devwarex.movies.ui.home.movies
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.devwarex.movies.data.MoviesPagingSource
 import com.devwarex.movies.model.Movie
+import com.devwarex.movies.repo.MoviesRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val pager: MoviesPagingSource
+    private val repo: MoviesRepo
 ): ViewModel() {
 
 
-    val items: Flow<PagingData<Movie>> = Pager(
-        config = PagingConfig(pageSize = 20, enablePlaceholders = false),
-        pagingSourceFactory = { pager }
-    ).flow.cachedIn(viewModelScope)
+    fun getMoviesByGenre(genreId: Int): Flow<PagingData<Movie>> =  repo.getMoviesResult(genreId = genreId)
 
 }

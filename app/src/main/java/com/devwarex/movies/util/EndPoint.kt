@@ -1,4 +1,4 @@
-package com.devwarex.movies.api
+package com.devwarex.movies.util
 
 object EndPoint {
     const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -6,8 +6,10 @@ object EndPoint {
     const val GENRES_LIST = "genre/movie/list"
     const val POPULAR_MOVIES = "movie/popular"
     const val DISCOVER_MOVIES = "discover/movie"
+    const val SEARCH_MOVIES = "search/movie"
     const val WITH_GENRES_QUERY = "with_genres"
     const val PAGE_QUERY = "page"
+    const val SEARCH_QUERY = "query"
     const val LANG_QUERY = "language"
 
     //keys

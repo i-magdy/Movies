@@ -1,10 +1,9 @@
 package com.devwarex.movies.api
 
-import com.devwarex.movies.api.EndPoint.BASE_URL
+import com.devwarex.movies.util.EndPoint.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
