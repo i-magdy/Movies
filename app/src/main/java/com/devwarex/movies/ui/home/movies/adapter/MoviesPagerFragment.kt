@@ -33,6 +33,7 @@ class MoviesPagerFragment : Fragment() {
         viewModel.genres.observe(viewLifecycleOwner){
             when(it){
                 is ApiResource.Success -> {
+                    binding.genreTabs.visibility = View.VISIBLE
                     val genres = addGeneralTabToGenres(genres = it.data.genres)
                     adapter.setGenres(genres)
                     showViewTabs(
@@ -42,7 +43,7 @@ class MoviesPagerFragment : Fragment() {
                     )
                 }
                 is ApiResource.Error -> Toast.makeText(context,it.message,Toast.LENGTH_LONG).show()
-                is ApiResource.Loading -> {}
+                is ApiResource.Loading -> { binding.genreTabs.visibility = View.GONE }
             }
         }
         return binding.root

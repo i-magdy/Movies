@@ -6,7 +6,8 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/genres_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/genre_tabs"
         android:layout_width="match_parent"
