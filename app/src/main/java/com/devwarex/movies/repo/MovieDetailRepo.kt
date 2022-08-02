@@ -2,6 +2,7 @@ package com.devwarex.movies.repo
 
 import com.devwarex.movies.api.MovieService
 import com.devwarex.movies.data.ApiResource
+import com.devwarex.movies.di.NamedApiKey
 import com.devwarex.movies.model.Movie
 import com.devwarex.movies.util.ApiState
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +14,8 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class MovieDetailRepo @Inject constructor(
-    private val service: MovieService
+    private val service: MovieService,
+    @NamedApiKey val apiKey: String
 ) {
 
     val movie = MutableStateFlow<ApiResource<Movie>>(ApiResource.Loading(ApiState.LOADING,null))
@@ -23,7 +25,7 @@ class MovieDetailRepo @Inject constructor(
         job.launch {
             try {
                movie.value = ApiResource.Success(
-                   data = service.getMovieById(movieId = movieId),
+                   data = service.getMovieById(movieId = movieId, key = apiKey),
                    state = ApiState.SUCCESS
                )
             }catch (e: HttpException){

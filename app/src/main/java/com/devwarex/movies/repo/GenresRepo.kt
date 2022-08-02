@@ -1,8 +1,8 @@
 package com.devwarex.movies.repo
 
-import android.util.Log
 import com.devwarex.movies.api.MovieService
 import com.devwarex.movies.data.ApiResource
+import com.devwarex.movies.di.NamedApiKey
 import com.devwarex.movies.model.Genres
 import com.devwarex.movies.util.ApiState
 import kotlinx.coroutines.CoroutineScope
@@ -14,7 +14,8 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 class GenresRepo @Inject constructor(
-    private val service: MovieService
+    private val service: MovieService,
+    @NamedApiKey val apiKey: String
 ) {
 
     val genres = MutableStateFlow<ApiResource<Genres>>(ApiResource.Loading(ApiState.LOADING,null))
@@ -26,7 +27,7 @@ class GenresRepo @Inject constructor(
             try {
                 genres.value = ApiResource.Success(
                     state = ApiState.SUCCESS,
-                    data = service.getGenres()
+                    data = service.getGenres(apiKey)
                 )
             }catch (e: HttpException){
                 genres.value = ApiResource.Error(

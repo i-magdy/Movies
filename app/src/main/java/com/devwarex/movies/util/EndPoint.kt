@@ -12,6 +12,7 @@ object EndPoint {
     const val PAGE_QUERY = "page"
     const val SEARCH_QUERY = "query"
     const val LANG_QUERY = "language"
+    const val API_KEY_QUERY = "api_key"
     const val MOVIE_ID_PATH = "movie_id"
 
     //keys
