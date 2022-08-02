@@ -11,4 +11,5 @@
     <color name="white_light">#FAFAFA</color>
     <color name="background_white">#F2F2F2</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rating_color">#FFDF00</color>
 </resources>

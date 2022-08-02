@@ -37,10 +37,15 @@ class MoviesActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
         navController.addOnDestinationChangedListener { controller, destination, arguments -> hideSearchView() }
+        viewModel.title.observe(this){ supportActionBar?.title = it }
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        hideSearchView()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.home_main_menu,menu)

@@ -1,0 +1,44 @@
+package com.devwarex.movies.repo
+
+import com.devwarex.movies.api.MovieService
+import com.devwarex.movies.data.ApiResource
+import com.devwarex.movies.di.NamedApiKey
+import com.devwarex.movies.model.Credits
+import com.devwarex.movies.util.ApiState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import javax.inject.Inject
+
+class CreditsRepo @Inject constructor(
+    private val service: MovieService,
+    @NamedApiKey val apikey: String
+) {
+
+    val credits = MutableStateFlow<ApiResource<Credits>>(ApiResource.Loading(ApiState.LOADING,null))
+    private val job = CoroutineScope(Dispatchers.Default)
+
+
+    fun getCredits(movieId: Int){
+        job.launch {
+            try {
+                credits.value = ApiResource.Success(
+                    state = ApiState.SUCCESS,
+                    data = service.getMovieCredits(key = apikey, movieId = movieId)
+                )
+            }catch (e: HttpException){
+                credits.value = ApiResource.Error(
+                    state = ApiState.ERROR,
+                    message = e.message
+                )
+            }
+        }
+    }
+
+    fun cancelJob(){
+        job.cancel()
+    }
+}

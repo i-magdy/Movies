@@ -1,9 +1,13 @@
 package com.devwarex.movies.ui.home.movies
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -52,7 +56,6 @@ class MoviesFragment: Fragment(),MovieAdapterListener {
                 binding.contentMovies.moviesAppendProgress.isVisible = it.source.append is LoadState.Loading
             } }
         }
-
     }
 
     override fun onDestroy() {

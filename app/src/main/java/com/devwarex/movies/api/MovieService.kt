@@ -1,8 +1,6 @@
 package com.devwarex.movies.api
 
-import com.devwarex.movies.model.Genres
-import com.devwarex.movies.model.Movie
-import com.devwarex.movies.model.Movies
+import com.devwarex.movies.model.*
 import com.devwarex.movies.util.EndPoint
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -44,5 +42,17 @@ interface MovieService {
         @Path(EndPoint.MOVIE_ID_PATH) movieId: Int,
         @Query(EndPoint.API_KEY_QUERY) key: String,
         @Query(EndPoint.LANG_QUERY) lang: String
-    ): Movie
+    ): MovieDetail
+
+    @GET(EndPoint.MOVIE_IMAGES)
+    suspend fun getMovieImagesById(
+        @Path(EndPoint.MOVIE_ID_PATH) movieId: Int,
+        @Query(EndPoint.API_KEY_QUERY) key: String
+    ): Images
+
+    @GET(EndPoint.MOVIE_CREDITS)
+    suspend fun getMovieCredits(
+        @Path(EndPoint.MOVIE_ID_PATH) movieId: Int,
+        @Query(EndPoint.API_KEY_QUERY) key: String
+    ): Credits
 }

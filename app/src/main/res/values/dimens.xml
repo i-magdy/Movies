@@ -9,4 +9,5 @@
     <dimen name="space_64x">64dp</dimen>
     <dimen name="space_96x">96dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="detail_image_height">380dp</dimen>
 </resources>

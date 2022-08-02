@@ -8,6 +8,8 @@ object EndPoint {
     const val DISCOVER_MOVIES = "discover/movie"
     const val SEARCH_MOVIES = "search/movie"
     const val MOVIE_BY_ID = "movie/{movie_id}"
+    const val MOVIE_IMAGES = "movie/{movie_id}/images"
+    const val MOVIE_CREDITS = "movie/{movie_id}/credits"
     const val WITH_GENRES_QUERY = "with_genres"
     const val PAGE_QUERY = "page"
     const val SEARCH_QUERY = "query"
@@ -17,4 +19,5 @@ object EndPoint {
 
     //keys
     const val GENRE_ID_KEY: String = "genre id key"
+    const val IMAGE_PATH_KEY: String = "image path key"
 }

@@ -5,5 +5,9 @@
     <string name="movie_detail_fragment">Movie Detail</string>
     <string name="search_by_name">Search</string>
     <string name="popular_title">Popular</string>
-
+    <string name="movie_image_label">Movie image</string>
+    <string name="overview_title">Overview</string>
+    <string name="time_unit">min</string>
+    <string name="cast_title">Cast</string>
+    <string name="profile_image_label">Profile image</string>
 </resources>

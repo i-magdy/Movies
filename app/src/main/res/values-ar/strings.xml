@@ -6,4 +6,7 @@
     <string name="movie_detail_fragment">تفاصيل الفيلم</string>
     <string name="search_by_name">أبحث</string>
     <string name="popular_title">شائع</string>
+    <string name="movie_image_label">صورة الفيلم</string>
+    <string name="overview_title">الملخص</string>
+    <string name="time_unit">دقيقه</string>
 </resources>
