@@ -9,4 +9,6 @@
     <string name="movie_image_label">صورة الفيلم</string>
     <string name="overview_title">الملخص</string>
     <string name="time_unit">دقيقه</string>
+    <string name="cast_title">ممثلين</string>
+    <string name="profile_image_label">صوره شخصيه</string>
 </resources>

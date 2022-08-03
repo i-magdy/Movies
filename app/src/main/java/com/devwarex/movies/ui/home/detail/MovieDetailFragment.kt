@@ -104,6 +104,6 @@ class MovieDetailFragment : Fragment() {
         binding.movieContent.detailMovieReleaseTv.text = movie.release_date
         binding.movieContent.detailMovieOverviewTv.text = movie.overview
         binding.movieContent.detailMovieDuration.text = "${movie.runtime} ${getString(R.string.time_unit)}"
-        binding.movieContent.imageGuideLayout.animate().setStartDelay(1200).alpha(0f).start()
+        binding.movieContent.imageGuideLayout.animate().setStartDelay(1700).alpha(0f).start()
     }
 }
