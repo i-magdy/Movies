@@ -76,6 +76,10 @@ class MovieDetailFragment : Fragment() {
                 is ApiResource.Success -> {
                     binding.movieContent.detailCastTitle.visibility = View.VISIBLE
                     binding.movieContent.movieCastRecycler.visibility = View.VISIBLE
+                    if (it.data.cast.isNullOrEmpty()){
+                        binding.movieContent.detailCastTitle.visibility = View.GONE
+                        binding.movieContent.movieCastRecycler.visibility = View.GONE
+                    }
                     castAdapter.setCasts(it.data.cast)
                 }
 
