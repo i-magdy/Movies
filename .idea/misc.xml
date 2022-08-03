@@ -7,10 +7,12 @@
         <entry key="app/src/main/res/drawable-v24/ic_movie_logo_foreground.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable/chip_inline.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable/chip_outline.xml" value="0.1845" />
+        <entry key="app/src/main/res/drawable/ic_movie_logo.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable/ic_movie_logo_foreground.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable/selector_tap.xml" value="0.1845" />
         <entry key="app/src/main/res/drawable/tab_icon_color_selector.xml" value="0.1845" />
         <entry key="app/src/main/res/layout/activity_basic.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_launch.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_movies.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/cast_item.xml" value="0.35625" />
