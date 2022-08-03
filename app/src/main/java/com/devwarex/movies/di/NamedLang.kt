@@ -1,9 +1,7 @@
 package com.devwarex.movies.di
 
-import java.lang.annotation.Documented
 import javax.inject.Qualifier
 
 @Qualifier
-@Documented
-@Retention(AnnotationRetention.RUNTIME)
+@Retention(AnnotationRetention.BINARY)
 annotation class NamedLang()

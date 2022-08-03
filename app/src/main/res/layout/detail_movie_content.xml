@@ -21,7 +21,7 @@
         android:layout_height="@dimen/detail_image_height"
         android:background="@color/black_light"
         android:orientation="horizontal"
-        android:alpha="0.7"
+        android:alpha="0.8"
         android:focusable="false"
         android:clickable="false"
         app:layout_constraintStart_toStartOf="@id/movie_images_pager"
@@ -32,6 +32,7 @@
         <ImageView
             android:layout_width="72dp"
             android:layout_height="72dp"
+            app:tint="@color/teal_200"
             android:src="@drawable/ic_baseline_arrow_left_24"
             android:layout_gravity="start|center"/>
 
@@ -42,12 +43,13 @@
         <ImageView
             android:layout_width="72dp"
             android:layout_height="72dp"
+            app:tint="@color/teal_200"
             android:src="@drawable/ic_baseline_arrow_right_24"
             android:layout_gravity="end|center"/>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/detail_movie_title_tv"
+        android:id="@+id/detail_movie_original_title_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +70,8 @@
         android:stepSize="0.1"
         android:progressTint="@color/rating_color"
         android:layout_marginTop="@dimen/space_8x"
-        app:layout_constraintStart_toStartOf="@+id/detail_movie_title_tv"
-        app:layout_constraintTop_toBottomOf="@+id/detail_movie_title_tv" />
+        app:layout_constraintStart_toStartOf="@+id/detail_movie_original_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/detail_movie_original_title_tv" />
 
     <TextView
         android:id="@+id/detail_movie_rating_tv"
@@ -98,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_16x"
         android:textAppearance="?attr/textAppearanceOverline"
-        app:layout_constraintStart_toStartOf="@+id/detail_movie_title_tv"
+        app:layout_constraintStart_toStartOf="@+id/detail_movie_original_title_tv"
         app:layout_constraintTop_toBottomOf="@+id/detail_movie_rating"
         tools:text="YEAR" />
 
@@ -145,7 +147,7 @@
         android:text="@string/overview_title"
         android:textAppearance="?attr/textAppearanceBody1"
         android:layout_marginTop="@dimen/space_24x"
-        app:layout_constraintStart_toStartOf="@+id/detail_movie_title_tv"
+        app:layout_constraintStart_toStartOf="@+id/detail_movie_original_title_tv"
         app:layout_constraintTop_toBottomOf="@+id/detail_movie_release_tv" />
 
     <TextView

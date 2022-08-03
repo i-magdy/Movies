@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import com.devwarex.movies.R
 import com.devwarex.movies.adapter.MovieAdapterListener
 import com.devwarex.movies.adapter.MoviesAdapter
@@ -41,6 +42,7 @@ class MoviesFragment: Fragment(),MovieAdapterListener {
         val viewModel by viewModels<MoviesViewModel>()
         val adapter = MoviesAdapter(this)
         binding.contentMovies.moviesRecyclerView.adapter = adapter
+        binding.contentMovies.moviesRecyclerView.layoutManager = GridLayoutManager(context,2)
         arguments?.takeIf { it.containsKey(GENRE_ID_KEY) }?.apply {
             lifecycleScope.launchWhenCreated {
                 launch { viewModel.getMoviesByGenre(genreId = getInt(GENRE_ID_KEY)).collectLatest { adapter.submitData(it) } }

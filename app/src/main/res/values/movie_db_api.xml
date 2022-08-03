@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="api_key" templateMergeStrategy="preserve" translatable="false">26ec0a29e13214313168687de4abbaf5</string>
+    //TODO api key
+    <string name="api_key" templateMergeStrategy="preserve" translatable="false">YOUR-API_KEY_HERE</string>
 </resources>

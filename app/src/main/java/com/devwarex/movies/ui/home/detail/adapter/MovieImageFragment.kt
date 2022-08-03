@@ -17,6 +17,8 @@ class MovieImageFragment : Fragment(R.layout.layout_movie_image) {
             val url: String = EndPoint.IMAGE_BASE_URL+getString(EndPoint.IMAGE_PATH_KEY)
             Glide.with(requireContext())
                 .load(url)
+                .placeholder(R.drawable.alt_movie)
+                .error(R.drawable.alt_movie)
                 .into(image)
         }
 

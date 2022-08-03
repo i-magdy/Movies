@@ -92,8 +92,9 @@ class MovieDetailFragment : Fragment() {
         mainViewModel.setMovieTitle(movie.title)
         binding.movieContent.mainLayout.visibility = View.VISIBLE
         binding.detailMovieLoading.visibility = View.GONE
-        binding.movieContent.detailMovieTitleTv.text = movie.original_title
+        binding.movieContent.detailMovieOriginalTitleTv.text = movie.original_title
         binding.movieContent.detailMovieRating.rating = movie.vote_average.toFloat()
+        binding.movieContent.detailMovieRatingTv.text = movie.vote_average.toString()
         binding.movieContent.detailMovieRatingCountTv.text = "(${movie.vote_count})"
         binding.movieContent.detailMovieOriginalTv.text = if (movie.production_countries.isNullOrEmpty())"" else movie.production_countries[0].iso_3166_1
         binding.movieContent.detailMovieReleaseTv.text = movie.release_date

@@ -4,5 +4,6 @@ data class Cast(
     val id: Int,
     val known_for_department: String?,
     val profile_path: String?,
-    val name: String
+    val name: String,
+    val gender: Int
 )

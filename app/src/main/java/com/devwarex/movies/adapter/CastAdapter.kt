@@ -26,6 +26,8 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
             name.text = cast.name
             val url = EndPoint.IMAGE_BASE_URL + cast.profile_path
             glide.load(url)
+                .placeholder(if (cast.gender == 2) R.drawable.male else R.drawable.fe)
+                .error(if (cast.gender == 2) R.drawable.male else R.drawable.fe)
                 .into(image)
         }
     }

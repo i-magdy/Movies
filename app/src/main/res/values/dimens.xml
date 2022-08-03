@@ -2,9 +2,12 @@
     <dimen name="space_1x">1dp</dimen>
     <dimen name="space_2x">2dp</dimen>
     <dimen name="space_4x">4dp</dimen>
+    <dimen name="space_6x">6dp</dimen>
     <dimen name="space_8x">8dp</dimen>
+    <dimen name="space_12x">12dp</dimen>
     <dimen name="space_16x">16dp</dimen>
     <dimen name="space_24x">24dp</dimen>
+    <dimen name="space_26x">26dp</dimen>
     <dimen name="space_48x">48dp</dimen>
     <dimen name="space_64x">64dp</dimen>
     <dimen name="space_96x">96dp</dimen>
